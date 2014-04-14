@@ -43,11 +43,11 @@ https://docs.google.com/uc?export=download&confirm=yQmr&id=0B3FpUg6c-uqRUmNBRGFD
 wgetとかでは正しくダウンロードできないのでブラウザ経由でダウンロードする必要がある
 
 ↓<br />
-↓ 　
-↓ 　
-↓ 　
-↓ 　
-↓ 　
+↓<br />
+↓<br />
+↓<br />
+↓<br />
+↓<br />
 
 ### 指定のディレクトリへ移動してboxを配置して、追加
 ```
