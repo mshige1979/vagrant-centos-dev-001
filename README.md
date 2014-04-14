@@ -14,3 +14,5 @@ $ git clone https://github.com/mshige1979/vagrant-centos-dev-001.git
 $ cd  vagrant-centos-dev-001
 $ vagrant up
 ```
+
+### しばらく待つ必要があります
