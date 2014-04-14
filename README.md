@@ -42,12 +42,12 @@ https://docs.google.com/uc?export=download&confirm=yQmr&id=0B3FpUg6c-uqRUmNBRGFD
 配置したけど一度ダウンロードしてからでないと使えないかも
 wgetとかでは正しくダウンロードできないのでブラウザ経由でダウンロードする必要がある
 
-↓　
-↓　
-↓　
-↓　
-↓　
-↓　
+↓ 　
+↓ 　
+↓ 　
+↓ 　
+↓ 　
+↓ 　
 
 ### 指定のディレクトリへ移動してboxを配置して、追加
 ```
