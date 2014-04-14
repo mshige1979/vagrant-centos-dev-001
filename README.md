@@ -77,7 +77,7 @@ SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:c9:39:9
 # PCI device 0x8086:0x100e (e1000)
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:8f:2d:17", ATTR{type}=="1", KERNEL=="eth*", NAME="eth1"
 ----
-↓
+↓以下へ変更（erth1の項目を削除）
 ----
 # PCI device 0x8086:0x100e (e1000)
 SUBSYSTEM=="net", ACTION=="add", DRIVERS=="?*", ATTR{address}=="08:00:27:c9:39:9e", ATTR{type}=="1", KERNEL=="eth*", NAME="eth0"
