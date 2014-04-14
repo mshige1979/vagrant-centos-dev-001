@@ -35,7 +35,7 @@ $ vagrant up
 ```
 https://docs.google.com/uc?export=download&confirm=yQmr&id=0B3FpUg6c-uqRUmNBRGFDUGRKazg
 ```
-配置したけど一度ダウンロードしてからでない使えないかも
-
+配置したけど一度ダウンロードしてからでないと使えないかも
+wgetとかでは正しくダウンロードできないのでブラウザ経由でダウンロードする必要がある
 
 
