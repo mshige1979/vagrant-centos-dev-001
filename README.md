@@ -16,3 +16,23 @@ $ vagrant up
 ```
 
 ### しばらく待つ必要があります
+
+### やっていること
+* yum update
+* yum -y groupinstall "Development Tools"
+* リポジトリ登録
+* git最新化
+* vimインストール
+* perl(plenv)
+* php5.5
+* node
+* ruby
+* nginx
+* supervisord
+
+### 作成したあとのパッケージbox
+```
+https://dl.dropboxusercontent.com/u/36773763/vagrant/centos-dev-001.box
+```
+
+
