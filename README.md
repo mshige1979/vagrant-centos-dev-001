@@ -31,8 +31,6 @@ $ vagrant up
 * supervisord
 
 ### 作成したあとのパッケージbox
-```
-https://dl.dropboxusercontent.com/u/36773763/vagrant/centos-dev-001.box
-```
+容量が結構あるので公開はちょっと保留
 
 
