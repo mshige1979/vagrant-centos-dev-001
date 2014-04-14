@@ -32,5 +32,10 @@ $ vagrant up
 
 ### 作成したあとのパッケージbox
 容量が結構あるので公開はちょっと保留
+```
+https://docs.google.com/uc?export=download&confirm=yQmr&id=0B3FpUg6c-uqRUmNBRGFDUGRKazg
+```
+配置したけど一度ダウンロードしてからでない使えないかも
+
 
 
