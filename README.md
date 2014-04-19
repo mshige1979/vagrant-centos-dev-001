@@ -43,19 +43,19 @@ $ vagrant up
 
 ## MT設定
 ### http://mt6.example.com/cgi-bin/mt/mt.cgi へアクセス
-<a href="http://f.hatena.ne.jp/m_shige1979/20140419120811"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120811.jpg" alt="20140419120811" width="800"></a>
+<a href="http://f.hatena.ne.jp/m_shige1979/20140419120811"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120811.jpg" alt="20140419120811" width="600"></a>
 
 ### ウェブサイトを設定
-<a href="http://f.hatena.ne.jp/m_shige1979/20140419120812"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120812.jpg" alt="20140419120812" width="800"></a>
+<a href="http://f.hatena.ne.jp/m_shige1979/20140419120812"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120812.jpg" alt="20140419120812" width="600"></a>
 
 ### データベースの初期化
-<a href="http://f.hatena.ne.jp/m_shige1979/20140419120813"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120813.jpg" alt="20140419120813" width="800"></a>
+<a href="http://f.hatena.ne.jp/m_shige1979/20140419120813"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120813.jpg" alt="20140419120813" width="600"></a>
 
 ### ログイン
-<a href="http://f.hatena.ne.jp/m_shige1979/20140419120814"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120814.jpg" alt="20140419120814" width="800"></a>
+<a href="http://f.hatena.ne.jp/m_shige1979/20140419120814"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120814.jpg" alt="20140419120814" width="600"></a>
 
 ### ダッシュボードを表示
-<a href="http://f.hatena.ne.jp/m_shige1979/20140419120815"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120815.jpg" alt="20140419120815" width="800"></a>
+<a href="http://f.hatena.ne.jp/m_shige1979/20140419120815"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120815.jpg" alt="20140419120815" width="600"></a>
 
 
 
