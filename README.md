@@ -57,6 +57,15 @@ $ vagrant up
 ### ダッシュボードを表示
 <a href="http://f.hatena.ne.jp/m_shige1979/20140419120815"><img src="http://img.f.hatena.ne.jp/images/fotolife/m/m_shige1979/20140419/20140419120815.jpg" alt="20140419120815" width="600"></a>
 
+## /etc/hosts 編集
+```
+127.0.0.1   localhost localhost.localdomain localhost4 localhost4.localdomain4 mt6.example.com
+::1         localhost localhost.localdomain localhost6 localhost6.localdomain6
+```
+とする
+mt-check.cgiが正しく動作しないため、/etc/hostsを編集することが必要
+
+
 
 
 
