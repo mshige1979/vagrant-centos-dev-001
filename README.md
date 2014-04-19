@@ -7,6 +7,11 @@ MovableTypeを動作するように追加
 ## 補足
 ユーザー/パスワード ：vagrant / vagrant
 
+## hosts追加
+```
+192.168.33.10   mt6.example.com
+```
+を追加しておく
 
 ## 手順
 ### git clone
