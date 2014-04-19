@@ -2,6 +2,7 @@ vagrant-centos-dev-001
 ======================
 
 centosをベースに作成したvagrant
+MovableTypeを動作するように追加
 
 ## 補足
 ユーザー/パスワード ：vagrant / vagrant
