@@ -12,4 +12,3 @@ requires 'Imager';
 requires 'Cache::Memcached::Fast';
 requires 'DBD::mysql';
 requires 'Task::Plack';
-requires 'XMLRPC::Transport::HTTP::Plack';
