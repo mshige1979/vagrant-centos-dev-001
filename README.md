@@ -42,7 +42,7 @@ $ vagrant up
 * MT6.0.3のインストール（初期設定は手動）
 
 ## MT設定
-### http://mt6.example.com/cgi-bin/mt/mt.cgiへアクセス
+### http://mt6.example.com/cgi-bin/mt/mt.cgi へアクセス
 
 ### パラメータを設定
 
