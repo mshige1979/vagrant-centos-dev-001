@@ -34,6 +34,8 @@ sudo echo '' >> /etc/profile
 sudo echo 'export PATH="/usr/local/plenv/bin:$PATH"' >> /etc/profile
 sudo echo 'export PLENV_ROOT=/usr/local/plenv' >> /etc/profile
 sudo echo 'eval "$(plenv init -)"' >> /etc/profile
+sudo chown vagrant.vagrant -R /usr/local/plenv
+
 source /etc/profile
 
 plenv install 5.18.1
