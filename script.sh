@@ -73,3 +73,189 @@ perl /usr/local/plenv/shims/cpanm --installdeps .
 
 sudo mkdir -p /var/log/nginx/dev.example.com
 
+# iptables off
+sudo chkconfig iptables off
+sudo service iptables stop
+
+# cpanfile
+sudo chown vagrant.vagrant -R /usr/local/plenv
+source /etc/profile
+
+cd /vagrant
+perl /usr/local/plenv/shims/cpanm --installdeps .
+
+# memcached
+sudo yum install -y memcached
+sudo chkconfig memcached on
+sudo service memcached start
+
+# mysql
+mysql -uroot -e "create database mt6_db;"
+mysql -uroot -e "grant all privileges on mt6_db.* to 'root'@'localhost' identified by 'password';"
+
+# mt
+cd /vagrant/
+wget https://www.dropbox.com/s/7oy86ddjypkioa8/MT-6_0_3.zip
+mv MT-6_0_3.zip /tmp/.
+cd /tmp/
+unzip MT-6_0_3.zip
+
+# mkdir
+sudo mkdir -p /var/www/vhosts/mt6.example.com/html
+sudo mkdir -p /var/www/vhosts/mt6.example.com/cgi-bin
+sudo mkdir -p /var/www/vhosts/mt6.example.com/logs
+sudo mkdir -p /var/log/starman
+
+# move
+sudo mv MT-6.0.3/ /var/www/vhosts/mt6.example.com/cgi-bin/mt
+sudo mv /var/www/vhosts/mt6.example.com/cgi-bin/mt/mt-static /var/www/vhosts/mt6.example.com/html
+
+# env
+cd /var/www/vhosts/mt6.example.com/cgi-bin/mt
+mv mt.psgi         mt.psgi.org
+mv mt-atom.cgi     mt-atom.cgi.org
+mv mt.cgi          mt.cgi.org
+mv mt-check.cgi    mt-check.cgi.org
+mv mt-comments.cgi mt-comments.cgi.org
+mv mt-cp.cgi       mt-cp.cgi.org
+mv mt-data-api.cgi mt-data-api.cgi.org
+mv mt-feed.cgi     mt-feed.cgi.org
+mv mt-ftsearch.cgi mt-ftsearch.cgi.org
+mv mt-search.cgi   mt-search.cgi.org
+mv mt-sp.cgi       mt-sp.cgi.org
+mv mt-tb.cgi       mt-tb.cgi.org
+mv mt-testbg.cgi   mt-testbg.cgi.org
+mv mt-upgrade.cgi  mt-upgrade.cgi.org
+mv mt-wizard.cgi   mt-wizard.cgi.org
+mv mt-xmlrpc.cgi   mt-xmlrpc.cgi.org
+
+sed -e 's/#!\/usr\/bin\/perl/#!\/usr\/bin\/env perl/g'    mt.psgi.org         > mt.psgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-atom.cgi.org     > mt-atom.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt.cgi.org          > mt.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-check.cgi.org    > mt-check.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-comments.cgi.org > mt-comments.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-cp.cgi.org       > mt-cp.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-data-api.cgi.org > mt-data-api.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-feed.cgi.org     > mt-feed.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-ftsearch.cgi.org > mt-ftsearch.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-search.cgi.org   > mt-search.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-tb.cgi.org       > mt-tb.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-sp.cgi.org       > mt-sp.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-testbg.cgi.org   > mt-testbg.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-upgrade.cgi.org  > mt-upgrade.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-wizard.cgi.org   > mt-wizard.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-xmlrpc.cgi.org   > mt-xmlrpc.cgi
+
+# config copy
+cp mt-config.cgi-original mt-config.cgi
+sudo chmod +x *.cgi
+
+# nginx setting file
+cat <<'_EOT_' > /tmp/mt6.example.com.conf
+upstream psgi_servers {
+    server 127.0.0.1:8001;
+}
+
+server {
+    listen       80;
+    server_name mt6.example.com;
+    root /var/www/vhosts/mt6.example.com/html;
+    access_log  /var/www/vhosts/mt6.example.com/logs/access.log  main;
+    error_log   /var/www/vhosts/mt6.example.com/logs/error.log warn;
+    gzip on;
+
+    server_tokens off;
+    ignore_invalid_headers on;
+
+    location /cgi-bin/mt/ {
+        client_max_body_size 30M;
+        proxy_redirect off;
+        proxy_set_header    X-Forwarded-Proto $http_x_forwarded_proto;
+        proxy_set_header    X-Forwarded-Host  $host;
+        proxy_set_header    Host              $host;
+        proxy_set_header    X-Real-IP         $remote_addr;
+        proxy_set_header    X-Forwarded-For   $proxy_add_x_forwarded_for;
+        proxy_pass http://psgi_servers;
+    }
+}
+
+_EOT_
+
+
+sudo mv /tmp/mt6.example.com.conf /etc/nginx/conf.d/mt6.example.com.conf
+
+# nginx restart
+sudo service nginx restart
+
+# mt exec
+cat <<'_EOT_' > /tmp/mt.sh
+#!/bin/sh
+cd /var/www/vhosts/mt6.example.com/cgi-bin/mt/
+exec /usr/local/plenv/shims/starman --listen :8001 --workers 2 --error-log /var/log/starman/mt.log --pid /var/www/vhosts/mt6.example.com/mt.pid ./mt.psgi
+_EOT_
+
+# move & chmod
+sudo mv /tmp/mt.sh /var/www/vhosts/mt6.example.com/mt.sh
+sudo chmod +x /var/www/vhosts/mt6.example.com/mt.sh
+
+# config change
+cd /var/www/vhosts/mt6.example.com/cgi-bin/mt/
+sudo mv mt-config.cgi-original mt-config.cgi
+sudo chmod 755 mt-config.cgi
+sudo chmod 755 mt.cgi
+
+# config replace
+sudo cp -p mt-config.cgi mt-config.cgi.org
+cat <<'_EOT_' > mt-config.cgi
+
+##### PATH #####
+CGIPath        http://mt6.example.com/cgi-bin/mt/
+
+##### STATIC PATH #####
+StaticWebPath  http://mt6.example.com/mt-static/ 
+StaticFilePath /var/www/vhosts/mt6.example.com/html/mt-static/
+
+##### MYSQL #####
+ObjectDriver DBI::mysql
+Database mt6_db
+DBUser root
+DBPassword password
+DBHost localhost
+
+##### PID #####
+PidFilePath    /var/www/vhosts/mt6.example.com/mt.pid
+
+##### image #####
+ImageDriver Imager
+
+##### memcache #####
+MemcachedNamespace mt6.example.com
+MemcachedDriver Cache::Memcached::Fast
+MemcachedServers localhost:11211
+
+##### language #####
+DefaultLanguage ja
+
+_EOT_
+
+
+# supervisord
+sudo chown vagrant.vagrant /etc/supervisord.conf
+sudo cp -p /etc/supervisord.conf /etc/supervisord.conf.org
+
+cat <<'_EOT_' >> /etc/supervisord.conf
+
+[program:mt]
+user=root
+command=/var/www/vhosts/mt6.example.com/mt.sh
+autostart=true
+autorestart=true
+stopsignal=QUIT
+_EOT_
+
+# nginx restart
+sudo service nginx restart
+
+# supervisord restart
+sudo service supervisord restart
+
