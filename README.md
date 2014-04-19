@@ -41,6 +41,15 @@ $ vagrant up
 * supervisord
 * MT6.0.3のインストール（初期設定は手動）
 
+## MT設定
+### http://mt6.example.com/cgi-bin/mt/mt.cgiへアクセス
+
+### パラメータを設定
+
+## 初期処理完了
+
+
+
 
 
 
