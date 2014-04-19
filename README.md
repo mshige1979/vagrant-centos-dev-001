@@ -8,6 +8,7 @@ MovableTypeを動作するように追加
 ユーザー/パスワード ：vagrant / vagrant
 
 ## hosts追加
+クライアントＰＣのhostsファイルに以下を追加
 ```
 192.168.33.10   mt6.example.com
 ```
