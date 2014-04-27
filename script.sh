@@ -140,7 +140,7 @@ server {
 _EOT_
 
 sudo mv /tmp/dev.example.com.conf /etc/nginx/conf.d/dev.example.com.conf
-
+sudo service nginx restart
 
 mysql -u root -e "create database my_app default charset utf8"
 mysql -u root -e "create database test_my_app default charset utf8"
