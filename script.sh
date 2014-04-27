@@ -85,6 +85,18 @@ if [ -f /vagrant/composer.json ]; then
 fi
 
 sudo cp -p /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.org
+sudo cat /etc/php-fpm.d/www.conf > /tmp/www.conf
+sudo sed -i 's/user = apache/user = nginx/g'                   /tmp/www.conf
+sudo sed -i 's/group = apache/group = nginx/g'                 /tmp/www.conf
+sudo sed -i 's/;listen.mode = 0666/listen.mode = 0666/g'       /tmp/www.conf
+sudo sed -i 's/;listen.owner = nobody/listen.owner = nginx/g'  /tmp/www.conf
+sudo sed -i 's/;listen.group = nobody/listen.group = nginx/g'  /tmp/www.conf
+sudo mv /tmp/www.conf /etc/php-fpm.d/www.conf
+
+sudo chkconfig nginx on
+sudo service nginx start
+
+
 
 mysql -u root -e "create database my_app default charset utf8"
 mysql -u root -e "create database test_my_app default charset utf8"
