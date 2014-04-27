@@ -26,6 +26,9 @@ sudo chkconfig ntpd on
 # vim
 sudo yum -y install vim
 
+# iptables
+sudo service iptables stop
+
 # plenv
 git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
 git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
