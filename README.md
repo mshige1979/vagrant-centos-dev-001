@@ -16,7 +16,7 @@ $ git clone https://github.com/mshige1979/vagrant-centos-dev-001.git -b cakephp3
 
 ### ディレクトリを移動して「vagrant up」
 ```
-$ cd  vagrant-centos-dev-001
+$ cd  cakephp3.x
 $ vagrant up
 ```
 
