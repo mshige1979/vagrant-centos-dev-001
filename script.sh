@@ -74,5 +74,12 @@ cd /vagrant
 /usr/local/plenv/shims/cpanm Net::Server --force
 perl /usr/local/plenv/shims/cpanm --installdeps .
 
-sudo mkdir -p /var/log/nginx/dev.example.com
+cd /vagrant
+sudo mkdir -p /vagrant/htdocs
+
+if [ -f /vagrant/htdocs/composer.json ]; then
+  cd /share && curl -s http://getcomposer.org/installer | php
+  yes "n" | /usr/bin/php /vagrant/htdocs/composer.phar create-project -s dev cakephp/app app
+fi
+
 
