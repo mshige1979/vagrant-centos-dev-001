@@ -105,33 +105,24 @@ sudo sed -i 's/;listen.owner = nobody/listen.owner = nginx/g'  /tmp/www.conf
 sudo sed -i 's/;listen.group = nobody/listen.group = nginx/g'  /tmp/www.conf
 sudo mv /tmp/www.conf /etc/php-fpm.d/www.conf
 
-sudo chkconfig nginx on
-sudo service nginx start
-
 cat <<'_EOT_' > /tmp/dev.example.com.conf
 server {
-    # ポート、サーバネーム
     listen       80;
     server_name  dev.example.com
                  192.168.33.10
                  ;
 
-    # アクセスログ、エラーログ
     access_log  /var/log/nginx/dev.example.com/access.log  main;
     error_log   /var/log/nginx/dev.example.com/error.log;
 
-    # ドキュメントルート
     root   /vagrant/htdocs/app/webroot;
 
-    # indexファイル
     index  index.php;
 
-    # locationの設定
     location / {
         try_files $uri $uri/ /index.php?$uri&$args;
     }
 
-    # phpの処理
     location ~ \.php$ {
         try_files $uri =404;
         fastcgi_pass   127.0.0.1:9000;
@@ -140,20 +131,24 @@ server {
         include        fastcgi_params;
     }
 
-    # アクセスを制限する
     location ~ (\.htaccess|\.git|\.svn) {
         deny  all;
     }
     
-    # 文字コード
     charset utf-8;
     
 }
 
 _EOT_
 
+
 sudo mkdir -p /var/log/nginx/dev.example.com
 sudo mv /tmp/dev.example.com.conf /etc/nginx/conf.d/dev.example.com.conf
+
+sudo chkconfig php-fpm on
+sudo chkconfig nginx on
+
+sudo service php-fpm restart
 sudo service nginx restart
 
 mysql -u root -e "create database my_app default charset utf8"
