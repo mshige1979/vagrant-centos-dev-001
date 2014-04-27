@@ -84,4 +84,7 @@ if [ -f /vagrant/composer.json ]; then
   yes "n" | /usr/bin/php /vagrant/htdocs/composer.phar create-project -s dev cakephp/app app
 fi
 
+mysql -u root -e "create database my_app default charset utf8"
+mysql -u root -e "create database test_my_app default charset utf8"
+mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'my_app'@'localhost' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
 
