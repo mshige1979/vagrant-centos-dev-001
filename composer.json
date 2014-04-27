@@ -2,6 +2,7 @@
   "require" : {
     "cakephp/cakephp" : "3.0.x-dev",
     "cakephp/app" : "dev-master",
+    "cakephp/debug_kit": "2.2.*",
     "php": ">=5.4"
   },
   "require-dev": {
