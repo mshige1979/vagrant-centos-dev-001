@@ -71,6 +71,7 @@ sudo service supervisord start
 sudo chkconfig supervisord on
 
 cd /vagrant
+/usr/local/plenv/shims/cpanm Net::Server --force
 perl /usr/local/plenv/shims/cpanm --installdeps .
 
 sudo mkdir -p /var/log/nginx/dev.example.com
