@@ -104,7 +104,9 @@ cat <<'_EOT_' > /tmp/dev.example.com.conf
 server {
     # ポート、サーバネーム
     listen       80;
-    server_name  dev.example.com;
+    server_name  dev.example.com
+                 192.168.33.10
+                 ;
 
     # アクセスログ、エラーログ
     access_log  /var/log/nginx/dev.example.com/access.log  main;
@@ -142,6 +144,7 @@ server {
 
 _EOT_
 
+sudo mkdir -p /var/log/nginx/dev.example.com
 sudo mv /tmp/dev.example.com.conf /etc/nginx/conf.d/dev.example.com.conf
 sudo service nginx restart
 
