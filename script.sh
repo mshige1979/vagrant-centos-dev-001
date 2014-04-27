@@ -89,6 +89,13 @@ if [ -f /vagrant/composer.json ]; then
   git submodule add https://github.com/cakephp/debug_kit.git app/Plugin/DebugKit
 fi
 
+cat <<'_EOT_' >> /vagrant/htdocs/app/App/Config/bootstrap.php
+
+Plugin::loadAll();
+Plugin::load('DebugKit');
+
+_EOT_
+
 sudo cp -p /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.org
 sudo cat /etc/php-fpm.d/www.conf > /tmp/www.conf
 sudo sed -i 's/user = apache/user = nginx/g'                   /tmp/www.conf
