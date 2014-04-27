@@ -77,8 +77,10 @@ perl /usr/local/plenv/shims/cpanm --installdeps .
 cd /vagrant
 sudo mkdir -p /vagrant/htdocs
 
-if [ -f /vagrant/htdocs/composer.json ]; then
-  cd /share && curl -s http://getcomposer.org/installer | php
+if [ -f /vagrant/composer.json ]; then
+  cd /vagrant/htdocs
+  cp -p /vagrant/composer.json /vagrant/htdocs/composer.json
+  curl -s http://getcomposer.org/installer | php
   yes "n" | /usr/bin/php /vagrant/htdocs/composer.phar create-project -s dev cakephp/app app
 fi
 
