@@ -10,7 +10,7 @@ centosをベースに作成したvagrant
 ## 手順
 ### git clone
 ```
-$ git clone https://github.com/mshige1979/vagrant-centos-dev-001.git
+$ git clone https://github.com/mshige1979/vagrant-centos-dev-001.git -b cakephp3.x cakephp3.x
 ```
 
 ### ディレクトリを移動して「vagrant up」
