@@ -78,24 +78,38 @@ cd /vagrant
 perl /usr/local/plenv/shims/cpanm --installdeps .
 
 cd /vagrant
-sudo mkdir -p /vagrant/htdocs
-sudo mkdir -p /var/log/nginx/dev.example.com
+sudo mkdir -p /vagrant/app_project
+sudo mkdir -p /vagrant/app_project/htdocs
+sudo mkdir -p /vagrant/app_project/lib
+sudo mkdir -p /vagrant/app_project/vendor
 
-if [ -f /vagrant/composer.json ]; then
-  cd /vagrant/htdocs
-  cp -p /vagrant/composer.json /vagrant/htdocs/composer.json
-  curl -s http://getcomposer.org/installer | php
-  yes "n" | /usr/bin/php /vagrant/htdocs/composer.phar create-project -s dev cakephp/app app
-  git submodule add https://github.com/cakephp/debug_kit.git app/Plugin/DebugKit
-fi
-
-cat <<'_EOT_' >> /vagrant/htdocs/app/App/Config/bootstrap.php
-
-Plugin::loadAll();
-Plugin::load('DebugKit');
-
+cd /vagrant/app_project
+cat <<'_EOT_' > /vagrant/app_project/composer.json
+{
+  "require" : {
+    "slim/slim" : "2.*",
+    "slim/views" : "0.1.*",
+    "slim/extras": "2.0.*",
+    "twig/twig": "1.*",
+    "illuminate/database": "4.0.*",
+    "Respect/Validation": "0.5.*",
+    "php": ">=5.4"
+  },
+  "require-dev": {
+    "phpunit/phpunit": "3.7.*"
+  },
+  "autoload": {
+    "psr-0": {
+      "": "lib/"
+    }
+  }
+}
 _EOT_
 
+curl -s http://getcomposer.org/installer | php
+yes "n" | /usr/bin/php /vagrant/app_project/composer.phar update
+
+sudo mkdir -p /var/log/nginx/dev.example.com
 sudo cp -p /etc/php-fpm.d/www.conf /etc/php-fpm.d/www.conf.org
 sudo cat /etc/php-fpm.d/www.conf > /tmp/www.conf
 sudo sed -i 's/user = apache/user = nginx/g'                   /tmp/www.conf
@@ -115,7 +129,7 @@ server {
     access_log  /var/log/nginx/dev.example.com/access.log  main;
     error_log   /var/log/nginx/dev.example.com/error.log;
 
-    root   /vagrant/htdocs/app/webroot;
+    root   /vagrant/app_project/htdocs;
 
     index  index.php;
 
@@ -151,7 +165,23 @@ sudo chkconfig nginx on
 sudo service php-fpm restart
 sudo service nginx restart
 
-mysql -u root -e "create database my_app default charset utf8"
-mysql -u root -e "create database test_my_app default charset utf8"
-mysql -u root -e "GRANT ALL PRIVILEGES ON *.* TO 'my_app'@'localhost' IDENTIFIED BY 'secret' WITH GRANT OPTION;"
+cat <<'_EOT_' > /vagrant/app_project/htdocs/index.php
+<?php
+
+// autoload reuqire
+require_once('../vendor/autoload.php');
+
+// slim
+$app = new \Slim\Slim([]);
+
+
+// route
+$app->get('/', function(){
+    echo "Hello World";
+});
+
+// run
+$app->run();
+_EOT_
+
 
