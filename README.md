@@ -6,6 +6,11 @@ centosをベースに作成したvagrant
 ## 補足
 ユーザー/パスワード ：vagrant / vagrant
 
+## 準備
+```
+vagrant plugin install vagrant-vbguest
+vagrant plugin install sahara
+```
 
 ## 手順
 ### git clone
