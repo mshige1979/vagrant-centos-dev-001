@@ -40,7 +40,10 @@ source /etc/profile
 
 plenv install 5.18.1
 plenv global 5.18.1
+sudo chown vagrant.vagrant -R /usr/local/plenv
+
 plenv install-cpanm
+sudo chown vagrant.vagrant -R /usr/local/plenv
 
 sudo rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
 sudo yum -y --enablerepo=epel install re2c libmcrypt libmcrypt-devel
