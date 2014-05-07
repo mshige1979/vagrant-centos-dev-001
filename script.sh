@@ -87,7 +87,7 @@ if [ -f /vagrant/composer.json ]; then
   cp -p /vagrant/composer.json /vagrant/htdocs/composer.json
   curl -s http://getcomposer.org/installer | php
   yes "n" | /usr/bin/php /vagrant/htdocs/composer.phar create-project -s dev cakephp/app app
-  git submodule add https://github.com/cakephp/debug_kit.git app/Plugin/DebugKit
+  git submodule add -f https://github.com/cakephp/debug_kit.git app/Plugin/DebugKit
 fi
 
 cat <<'_EOT_' >> /vagrant/htdocs/app/App/Config/bootstrap.php
