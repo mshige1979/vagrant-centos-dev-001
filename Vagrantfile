@@ -15,6 +15,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # network
   config.vm.network "private_network", ip: "192.168.33.10"
 
+  # share
+  config.vm.synced_folder "../", "/vagrant", \
+        create: true, owner: 'vagrant', group: 'vagrant', \
+        mount_options: ['dmode=777,fmode=666']
+
   # provision
   config.vm.provision :shell, :path => "script.sh"
   
