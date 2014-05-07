@@ -28,6 +28,7 @@ sudo yum -y install vim
 
 # iptables
 sudo service iptables stop
+sudo chkconfig iptables off
 
 # plenv
 git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
