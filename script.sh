@@ -30,8 +30,8 @@ sudo yum -y install vim
 sudo service iptables stop
 
 # plenv
-git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
-git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
+sudo git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
+sudo git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
 
 sudo echo '' >> /etc/profile
 sudo echo 'export PATH="/usr/local/plenv/bin:$PATH"' >> /etc/profile
