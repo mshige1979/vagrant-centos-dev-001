@@ -1,6 +1,7 @@
 #!/bin/sh
 
-# iptables
+# iptables off
+sudo chkconfig iptables off
 sudo service iptables stop
 
 
@@ -31,8 +32,8 @@ sudo chkconfig ntpd on
 sudo yum -y install vim
 
 # plenv
-git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
-git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
+sudo git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
+sudo git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
 
 sudo echo '' >> /etc/profile
 sudo echo 'export PATH="/usr/local/plenv/bin:$PATH"' >> /etc/profile
