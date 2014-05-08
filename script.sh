@@ -27,8 +27,8 @@ sudo chkconfig ntpd on
 sudo yum -y install vim
 
 # plenv
-git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
-git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
+sudo git clone git://github.com/tokuhirom/plenv.git /usr/local/plenv
+sudo git clone git://github.com/tokuhirom/Perl-Build.git /usr/local/plenv/plugins/perl-build
 
 sudo echo '' >> /etc/profile
 sudo echo 'export PATH="/usr/local/plenv/bin:$PATH"' >> /etc/profile
@@ -40,6 +40,8 @@ source /etc/profile
 
 plenv install 5.18.1
 plenv global 5.18.1
+
+sudo chown vagrant.vagrant -R /usr/local/plenv
 plenv install-cpanm
 
 sudo rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
