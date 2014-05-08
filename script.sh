@@ -26,7 +26,8 @@ sudo chkconfig ntpd on
 # vim
 sudo yum -y install vim
 
-# iptables
+# iptables off
+sudo chkconfig iptables off
 sudo service iptables stop
 
 # plenv
