@@ -89,6 +89,7 @@ sudo mv /var/www/vhosts/mt6.example.com/cgi-bin/mt/mt-static /var/www/vhosts/mt6
 # env
 cd /var/www/vhosts/mt6.example.com/cgi-bin/mt
 sudo chmod +x *.cgi
+sudo chown apache.apache /var/www/vhosts/mt6.example.com/ -R
 
 # httpd
 sudo service httpd start
