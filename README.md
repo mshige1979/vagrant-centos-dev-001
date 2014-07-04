@@ -100,6 +100,14 @@ vagrant reload
 ```
 で192.168.33.10での接続が動作するはず
 
+### メモリ変更
+```
+  # provider
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", 2048]
+  end
+```
+で環境の仮想メモリを2GBへ変更可能
 
 
 
