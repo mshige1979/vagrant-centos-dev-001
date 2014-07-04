@@ -15,6 +15,11 @@ Vagrant.configure(VAGRANTFILE_API_VERSION) do |config|
   # network
   config.vm.network "private_network", ip: "192.168.33.10"
 
+  # provider
+  config.vm.provider "virtualbox" do |vb|
+    vb.customize ["modifyvm", :id, "--memory", 2048]
+  end
+
   # share
   config.vm.synced_folder "./", "/vagrant", \
         create: true, owner: 'vagrant', group: 'vagrant', \
