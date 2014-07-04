@@ -106,22 +106,22 @@ mv mt-upgrade.cgi  mt-upgrade.cgi.org
 mv mt-wizard.cgi   mt-wizard.cgi.org
 mv mt-xmlrpc.cgi   mt-xmlrpc.cgi.org
 
-sed -e 's/#!\/usr\/bin\/perl/#!\/usr/local/plenv/shims/perl/g'    mt.psgi.org         > mt.psgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-atom.cgi.org     > mt-atom.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt.cgi.org          > mt.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-check.cgi.org    > mt-check.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-comments.cgi.org > mt-comments.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-cp.cgi.org       > mt-cp.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-data-api.cgi.org > mt-data-api.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-feed.cgi.org     > mt-feed.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-ftsearch.cgi.org > mt-ftsearch.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-search.cgi.org   > mt-search.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-tb.cgi.org       > mt-tb.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-sp.cgi.org       > mt-sp.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-testbg.cgi.org   > mt-testbg.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-upgrade.cgi.org  > mt-upgrade.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-wizard.cgi.org   > mt-wizard.cgi
-sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr/local/plenv/shims/perl/g' mt-xmlrpc.cgi.org   > mt-xmlrpc.cgi
+sed -e 's/#!\/usr\/bin\/perl/#!\/usr\/local\/plenv\/shims\/perl/g'    mt.psgi.org         > mt.psgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-atom.cgi.org     > mt-atom.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt.cgi.org          > mt.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-check.cgi.org    > mt-check.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-comments.cgi.org > mt-comments.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-cp.cgi.org       > mt-cp.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-data-api.cgi.org > mt-data-api.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-feed.cgi.org     > mt-feed.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-ftsearch.cgi.org > mt-ftsearch.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-search.cgi.org   > mt-search.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-tb.cgi.org       > mt-tb.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-sp.cgi.org       > mt-sp.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-testbg.cgi.org   > mt-testbg.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-upgrade.cgi.org  > mt-upgrade.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-wizard.cgi.org   > mt-wizard.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/local\/plenv\/shims\/perl/g' mt-xmlrpc.cgi.org   > mt-xmlrpc.cgi
 
 sudo chmod +x *.cgi
 sudo chown apache.apache /var/www/vhosts/mt6.example.com/ -R
