@@ -88,11 +88,46 @@ sudo mv /var/www/vhosts/mt6.example.com/cgi-bin/mt/mt-static /var/www/vhosts/mt6
 
 # env
 cd /var/www/vhosts/mt6.example.com/cgi-bin/mt
+
+mv mt.psgi         mt.psgi.org
+mv mt-atom.cgi     mt-atom.cgi.org
+mv mt.cgi          mt.cgi.org
+mv mt-check.cgi    mt-check.cgi.org
+mv mt-comments.cgi mt-comments.cgi.org
+mv mt-cp.cgi       mt-cp.cgi.org
+mv mt-data-api.cgi mt-data-api.cgi.org
+mv mt-feed.cgi     mt-feed.cgi.org
+mv mt-ftsearch.cgi mt-ftsearch.cgi.org
+mv mt-search.cgi   mt-search.cgi.org
+mv mt-sp.cgi       mt-sp.cgi.org
+mv mt-tb.cgi       mt-tb.cgi.org
+mv mt-testbg.cgi   mt-testbg.cgi.org
+mv mt-upgrade.cgi  mt-upgrade.cgi.org
+mv mt-wizard.cgi   mt-wizard.cgi.org
+mv mt-xmlrpc.cgi   mt-xmlrpc.cgi.org
+
+sed -e 's/#!\/usr\/bin\/perl/#!\/usr\/bin\/env perl/g'    mt.psgi.org         > mt.psgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-atom.cgi.org     > mt-atom.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt.cgi.org          > mt.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-check.cgi.org    > mt-check.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-comments.cgi.org > mt-comments.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-cp.cgi.org       > mt-cp.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-data-api.cgi.org > mt-data-api.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-feed.cgi.org     > mt-feed.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-ftsearch.cgi.org > mt-ftsearch.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-search.cgi.org   > mt-search.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-tb.cgi.org       > mt-tb.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-sp.cgi.org       > mt-sp.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-testbg.cgi.org   > mt-testbg.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-upgrade.cgi.org  > mt-upgrade.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-wizard.cgi.org   > mt-wizard.cgi
+sed -e 's/#!\/usr\/bin\/perl -w/#!\/usr\/bin\/env perl/g' mt-xmlrpc.cgi.org   > mt-xmlrpc.cgi
+
 sudo chmod +x *.cgi
 sudo chown apache.apache /var/www/vhosts/mt6.example.com/ -R
 
 # httpd
 sudo service httpd start
 sudo chkconfig httpd on
-
+sudo cp -p /vagrant/httpd.conf /etc/httpd/conf/httpd.conf
 
