@@ -4,7 +4,6 @@
 sudo chkconfig iptables off
 sudo service iptables stop
 
-
 # epel,remi
 sudo rpm -Uvh http://dl.fedoraproject.org/pub/epel/6/x86_64/epel-release-6-8.noarch.rpm
 sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
@@ -67,17 +66,31 @@ sudo yum -y install mysql mysql-devel mysql-server mysql-utilities
 sudo service mysqld start
 sudo chkconfig mysqld on
 
-sudo rpm -ivh http://nginx.org/packages/centos/6/noarch/RPMS/nginx-release-centos-6-0.el6.ngx.noarch.rpm
-sudo yum -y install nginx --enablerepo=nginx
-sudo service nginx start
-sudo chkconfig nginx on
+# httpd
 
-sudo yum -y install supervisor
-sudo service supervisord start
-sudo chkconfig supervisord on
 
+# perl cpanm
 cd /vagrant
 perl /usr/local/plenv/shims/cpanm --installdeps .
 
-sudo mkdir -p /var/log/nginx/dev.example.com
+# mt
+cd /vagrant/
+wget https://www.dropbox.com/s/7oy86ddjypkioa8/MT-6_0_3.zip
+mv MT-6_0_3.zip /tmp/.
+cd /tmp/
+unzip MT-6_0_3.zip
+
+# mkdir
+sudo mkdir -p /var/www/vhosts/mt6.example.com/html
+sudo mkdir -p /var/www/vhosts/mt6.example.com/cgi-bin
+sudo mkdir -p /var/www/vhosts/mt6.example.com/logs
+
+# move
+sudo mv MT-6.0.3/ /var/www/vhosts/mt6.example.com/cgi-bin/mt
+sudo mv /var/www/vhosts/mt6.example.com/cgi-bin/mt/mt-static /var/www/vhosts/mt6.example.com/html
+
+# env
+cd /var/www/vhosts/mt6.example.com/cgi-bin/mt
+sudo chmod +x *.cgi
+
 
