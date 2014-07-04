@@ -66,9 +66,6 @@ sudo yum -y install mysql mysql-devel mysql-server mysql-utilities
 sudo service mysqld start
 sudo chkconfig mysqld on
 
-# httpd
-
-
 # perl cpanm
 cd /vagrant
 perl /usr/local/plenv/shims/cpanm --installdeps .
@@ -92,5 +89,9 @@ sudo mv /var/www/vhosts/mt6.example.com/cgi-bin/mt/mt-static /var/www/vhosts/mt6
 # env
 cd /var/www/vhosts/mt6.example.com/cgi-bin/mt
 sudo chmod +x *.cgi
+
+# httpd
+sudo service httpd start
+sudo chkconfig httpd on
 
 
