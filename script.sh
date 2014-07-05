@@ -131,3 +131,8 @@ sudo chkconfig httpd on
 sudo cp -p /vagrant/httpd.conf /etc/httpd/conf/httpd.conf
 sudo service httpd start
 
+# mysql
+mysql -uroot -e "create database mt6_db;"
+mysql -uroot -e "grant all privileges on mt6_db.* to 'root'@'localhost' identified by 'password';"
+
+
