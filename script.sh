@@ -127,7 +127,7 @@ sudo chmod +x *.cgi
 sudo chown apache.apache /var/www/vhosts/mt6.example.com/ -R
 
 # httpd
-sudo service httpd start
 sudo chkconfig httpd on
 sudo cp -p /vagrant/httpd.conf /etc/httpd/conf/httpd.conf
+sudo service httpd start
 
