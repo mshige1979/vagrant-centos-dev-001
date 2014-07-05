@@ -10,6 +10,7 @@ centosをベースに作成したvagrant
 ```
 vagrant plugin install vagrant-vbguest
 vagrant plugin install sahara
+vagrant plugin install vagrant-hostsupdater
 ```
 
 ## 手順
