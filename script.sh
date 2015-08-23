@@ -31,3 +31,14 @@ sudo chkconfig ntpd on
 # vim
 sudo yum -y install vim
 
+# tools
+sudo rpm -Uvh http://mirror.webtatic.com/yum/el6/latest.rpm
+sudo yum -y --enablerepo=epel install re2c libmcrypt libmcrypt-devel
+sudo yum -y install libxml2-devel bison bison-devel openssl-devel curl-devel libjpeg-devel libpng-devel libmcrypt-devel readline-devel libtidy-devel libxslt-devel httpd-devel enchant-devel libXpm libXpm-devel freetype-devel t1lib t1lib-devel gmp-devel libc-client-devel libicu-devel oniguruma-devel net-snmp net-snmp-devel  bzip2-devel
+
+# mysql
+sudo yum -y install http://dev.mysql.com/get/mysql-community-release-el6-5.noarch.rpm
+sudo yum -y install mysql mysql-devel mysql-server mysql-utilities
+sudo service mysqld start
+sudo chkconfig mysqld on
+
