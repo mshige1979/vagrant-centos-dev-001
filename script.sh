@@ -4,16 +4,16 @@
 sudo chkconfig iptables off
 sudo service iptables stop
 
-
 # epel,remi
 sudo rpm -Uvh http://ftp.iij.ad.jp/pub/linux/fedora/epel/6/x86_64/epel-release-6-8.noarch.rpm
 sudo rpm -Uvh http://rpms.famillecollet.com/enterprise/remi-release-6.rpm
+sudo cp -p /vagrant/conf/epel.repo /etc/yum.repos.d/epel.repo
 
 # developer
 sudo yum -y update
 sudo yum -y groupinstall "Development Tools"
 
-cd /etc/yum.repos.d/
+#cd /etc/yum.repos.d/
 sudo wget http://wing-repo.net/wing/6/EL6.wing.repo
 sudo wget http://wing-repo.net/wing/extras/6/EL6.wing-extras.repo
 sudo yum clean all
